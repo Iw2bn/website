@@ -1,10 +1,84 @@
+
 <!DOCTYPE html>
 <html>
   <head> 
     <title>iw2bn.uk</title>
-	  <link rel="stylesheet" type="text/css" href="https://iw2bn.uk/style.css">
+    <link rel="stylesheet" type="text/css" href="https://iw2bn.uk/style.css">
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .search-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-grow: 1;
+        align-items: center;
+      }
+      .search-container form {
+        display: flex;
+        border-radius: 20px;
+        overflow: hidden;
+        max-width: 50%;
+      }
+      .search-container input[type="text"], select {
+        border: 2px solid #ddd;
+        padding: 10px 15px;
+        font-size: 16px;
+        outline: none;
+        flex-grow: 1;
+      }
+      select {
+        max-width: 150px;
+        cursor: pointer;
+      }
+      .search-container input[type="submit"] {
+        padding: 10px 15px;
+        font-size: 16px;
+        border: none;
+        background-color: #007BFF;
+        color: white;
+        cursor: pointer;
+        border-radius: 0 20px 20px 0;
+      }
+    </style>
+    <script>
+      function updateSearchEngine(selectElement) {
+        var form = document.querySelector('.search-container form');
+        var searchInput = document.querySelector('.search-container input[type="text"]');
+        var engines = {
+          'DuckDuckGo': {action: 'https://duckduckgo.com/', name: 'q'},
+          'Yandex': {action: 'https://yandex.com/search/', name: 'text'},
+          'Google': {action: 'https://www.google.com/search', name: 'q'}
+        };
+        form.action = engines[selectElement.value].action;
+        searchInput.name = engines[selectElement.value].name;
+        searchInput.placeholder = 'Search with ' + selectElement.value + '...';
+        form.method = 'get';
+      }
+      
+      document.addEventListener('DOMContentLoaded', function() {
+        updateSearchEngine(document.querySelector('select'));
+      });
+    </script>
   </head>
   <body>
     <h1>iw2bn.uk</h1>
+    <div class="search-container">
+      <form autocomplete="off">
+        <select onchange="updateSearchEngine(this)">
+          <option value="DuckDuckGo" selected>DuckDuckGo</option>
+          <option value="Yandex">Yandex</option>
+          <option value="Google">Google</option>
+        </select>
+        <input type="text" name="q" placeholder="Search with DuckDuckGo..." required autocomplete="off">
+        <input type="submit" value="Search">
+      </form>
+    </div>
   </body>
 </html>
+
