@@ -1,49 +1,31 @@
-/* Your existing styles */
-
-/* Styles to horizontally and vertically center the content */
-.main-content {
-  min-height: 100vh; /* Full viewport height */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0 20px; /* Padding on smaller screens */
+body{
+	margin: 0;
+	padding: 0;
+	background: #000;
 }
 
-/* Additional styles for the search container */
-.search-container {
-  margin-top: 20px; /* Space between title and search bar */
-  width: 100%; /* Take up available width */
-  max-width: 340px; /* Maximum width of the search bar */
-  display: flex; /* Use Flexbox for alignment */
-  justify-content: center; /* Center the search bar */
+h1{
+	text-align: center;
+	background: linear-gradient(90deg, #ff0000, #ffff00, #ff00f3, #0033ff, #ff00c4, #ff0000);
+	background-size: 200%;
+	font-size: clamp(55px, 10vw, 90px);
+	font-family: sans-serif;
+	letter-spacing: 5px;
+	font-weight: 600;
+	word-spacing: 5ppx;
+	-webkit-text-fill-color: transparent;
+	-webkit-background-clip: text;
+	animation: animate 10s linear infinite;
 }
 
-.search-container form {
-  width: 100%; /* Form should take up all space of its container */
-}
 
-.search-container input[type="text"],
-.search-container input[type="submit"] {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-}
 
-.search-container input[type="text"] {
-  flex: 1; /* Allow text input to fill the available space */
-  margin-right: -4px; /* Remove gap between the text field and button */
-}
-
-.search-container input[type="submit"] {
-  background: #f8f8f8;
-  cursor: pointer;
-}
-
-/* Ensures styling for the input elements */
-.search-container input[type="text"]:focus,
-.search-container input[type="submit"]:hover {
-  outline: none;
-  border-color: #777;
+@keyframes animate{
+	0%{
+	background-position: 0%;
+	}
+	
+	100%{
+	background-position: 400%;
+	}
 }
